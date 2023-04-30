@@ -1,4 +1,7 @@
 export default defineNuxtConfig({
+    nitro: {
+        compressPublicAssets: true,
+    },
     app: {
         head: {
             charset: 'utf-8',
@@ -18,19 +21,19 @@ export default defineNuxtConfig({
                 },
                 {
                     rel: 'stylesheet',
-                    href: 'https://fonts.cdnfonts.com/css/proxima-nova-2'  
+                    href: 'https://fonts.cdnfonts.com/css/proxima-nova-2'
                 }
             ],
         },
     },
-    modules: ['@nuxtjs/tailwindcss',[
+    modules: ['@nuxtjs/tailwindcss', [
         '@pinia/nuxt',
         {
-          autoImports: ['defineStore',
-            ['defineStore', 'definePiniaStore'],
-          ],
+            autoImports: ['defineStore',
+                ['defineStore', 'definePiniaStore'],
+            ],
         },
-      ],],
+    ],],
     pages: true,
 })
 
