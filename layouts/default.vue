@@ -1,7 +1,7 @@
 <template>
   <Header />
 
-      <slot  class="bg-gray-100"/>
+      <slot  class="bg-secondary"/>
 
   <Footer />
 </template>

@@ -10,7 +10,20 @@ module.exports = {
   plugins: [require("daisyui")],
   daisyui: {
     styled: true,
-    //themes: ["lofi", "Dark",],
+    themes: [
+      {
+        tugangaelectronic: {
+          "primary": "#021544",
+          "secondary": "#EAEBEE",
+          "accent": "#021544",
+          "neutral": "#021544",
+          "base-100": "#FFFFFF",
+          "info": "#4AA8C0",
+          "success": "#823290",
+          "warning": "#EE8133",
+          "error": "#E93F33",
+        }
+      }],
     base: true,
     utils: true,
     logs: true,

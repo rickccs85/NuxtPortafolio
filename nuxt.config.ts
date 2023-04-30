@@ -8,11 +8,11 @@ export default defineNuxtConfig({
             viewport: 'width=device-width, initial-scale=1',
             htmlAttrs: {
                 lang: 'es',
-                'data-theme': 'cmyk',
+                'data-theme': 'tugangaelectronic',
             },
             title: 'tugangaelectronic.com',
             meta: [
-                { name: 'description', content: 'My amazing site.' }
+                { name: 'La tienda virtual de Venezuela', content: 'My amazing site.' }
             ],
             link: [
                 {
