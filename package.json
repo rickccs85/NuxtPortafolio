@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "NUXTPORTAFOLIO",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -9,7 +9,20 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.6.7",
     "@types/node": "^18",
+    "daisyui": "^2.46.0",
     "nuxt": "^3.4.2"
-  }
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.9",
+    "axios": "^1.4.0",
+    "vuex": "^4.1.0"
+  },
+  "version": "1.0.0",
+  "description": "Ecommerce",
+  "main": "index.js",
+  "repository": "https://github.com/rickccs85/NuxtPortafolio.git",
+  "author": "rickccs85 <infantericardo@gmail.com>",
+  "license": "MIT"
 }
