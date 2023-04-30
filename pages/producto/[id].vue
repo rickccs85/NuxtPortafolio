@@ -1,5 +1,5 @@
 <template>
-    <div class="container p-10">
+    <div class="container p-4 lg:p-8">
         <div class="text-sm breadcrumbs">
             <ul>
                 <li>
@@ -8,13 +8,7 @@
                     </router-link>
                 </li>
                 <li>
-                    <NuxtLink to="/">
-                        Home
-                    </NuxtLink>
-                </li>
-                <li>
                     <a>
-
                         {{ producto.category_id }}
                     </a>
                 </li>
@@ -34,12 +28,13 @@
                         <span class="text-2xl font-bold mr-2">{{ producto.price }}</span>
                         <span class="text-gray-600">{{ producto.moneda }}</span>
                     </div>
-                    <button @click="store.agregarProducto({id:producto.id, title:producto.title, price:producto.price, thumbnail:producto.thumbnail,quantity:1,subTotal:producto.price})"
+                    <button
+                        @click="store.agregarProducto({ id: producto.id, title: producto.title, price: producto.price, thumbnail: producto.thumbnail, quantity: 1, subTotal: producto.price })"
                         class="btn gap-2">Agregar al carrito</button>
                 </div>
             </div>
         </div>
-      </div>
+    </div>
 </template>
 
 <script setup>

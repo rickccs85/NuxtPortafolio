@@ -1,22 +1,21 @@
 <template>
     <Carousel />
-    <div class="grid grid-cols-5 gap-2 p-8">
-        <div v-for="producto in productos" :key="producto.id" class="card card-compact w-full bg-base-100 shadow-xl">
-            <NuxtLink :to="`/producto/${producto.id}`">
-                <figure>
+    <div class="grid grid-cols-2 lg:grid-cols-5 gap-2 p-4">
+        <div v-for="producto in productos" :key="producto.id" class="card card-compact w-full bg-base-100 shadow">
+                           <figure>
                     <img class="h-52" :src="'https://http2.mlstatic.com/D_' + producto.thumbnail_id + '-O.webp'"
                         :alt="producto.thumbnail_id" />
                 </figure>
-                <div class="card-body">
+                <div class="card-body"><NuxtLink :to="`/producto/${producto.id}`">
                     <h4 class="line-clamp-2 group-hover:line-clamp-4  hover:underline">{{ producto.title }}</h4>
-                    <h1>U$D {{ producto.price }}</h1>
+                    <h1>U$D {{ producto.price }}</h1></NuxtLink>
                                       <div class="card-actions justify-end">
                         <button
                             @click="addToCart(store.agregarProducto({ id: producto.id, title: producto.title, price: producto.price, thumbnail: producto.thumbnail, quantity: 1, subTotal: 0 }))"
                             class="btn btn-xs ">Añadir a Carrito</button>
                     </div>
                 </div>
-            </NuxtLink>
+            
         </div>
     </div>
     <div v-if="pendiente" class="flex justify-center p-8">

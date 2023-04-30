@@ -1,15 +1,9 @@
 <template>
+  <Header />
 
-<!-- <div class="drawer drawer-end">
-  <input id="shopping-cart" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content"> -->
-  
-      <Header  />
-      <slot />
-      <Footer />
-  <!--   </div>  -->
-    
+      <slot  class="bg-gray-100"/>
 
+  <Footer />
 </template>
 <script setup>
 import { onMounted } from 'vue';
@@ -17,6 +11,6 @@ import { useCarrito } from '~/stores/carrito';
 const store = useCarrito();
 console.log("Bien")
 onMounted(() => {
-  console.log( store.cargarProductosMl());
+  // console.log( store.cargarProductosMl());
 });
 </script>
