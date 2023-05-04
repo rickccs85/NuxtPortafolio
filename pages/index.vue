@@ -1,10 +1,11 @@
 <template>
     <Carousel />
-    <div class="grid grid-cols-2 lg:grid-cols-5 gap-2 p-4">
+    
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 p-4">
         <div v-for="producto in productos" :key="producto.id" class="card card-compact w-full bg-base-100 shadow">
                            <figure>
-                    <img class="h-52" :src="'https://http2.mlstatic.com/D_' + producto.thumbnail_id + '-O.webp'"
-                        :alt="producto.thumbnail_id" />
+                            <div v-bind:style="{ 'background-image': 'url(https://http2.mlstatic.com/D_' + producto.thumbnail_id + '-O.webp)' }" class="border-b-1 h-56 w-full bg-contain bg-center bg-no-repeat" ></div>
+   
                 </figure>
                 <div class="card-body"><NuxtLink :to="`/producto/${producto.id}`">
                     <h4 class="line-clamp-2 group-hover:line-clamp-4  hover:underline">{{ producto.title }}</h4>

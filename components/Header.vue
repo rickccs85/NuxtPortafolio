@@ -1,3 +1,8 @@
+<script setup>
+const isActive = false;
+import { useCarrito } from '~/stores/carrito';
+const store = useCarrito();
+</script>
 <template>
   <div class="navbar bg-base-100 sticky top-0 z-50 shadow-xl">
     <div class="navbar-start">
@@ -9,9 +14,8 @@
           </svg>
         </label>
         <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a>Item 1</a></li>
-          <li><a>Item 2</a></li>
-        </ul>
+          <li v-for="categoria in store.categorias"><a>{{categoria.name}}</a></li>
+                </ul>
       </div>
       <NuxtLink to="/">
         <img class="h-12 max-w-none pl-2" src="~/assets/img/tugangaelectronic-logo-32.svg">
@@ -60,8 +64,4 @@
     </div>
   </div>
 </template>
-<script setup>
-const isActive = false;
-import { useCarrito } from '~/stores/carrito';
-const store = useCarrito();
-</script>
+
