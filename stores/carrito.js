@@ -11,6 +11,9 @@ export const useCarrito = defineStore('carrito', {
         carritoCuentaTotal(state) {
             return state.productos.length
         },
+        carritoTotal(state) {
+            return state.productos.length
+        },
 
         productosCheaperThan(state) {
             return (price) => (
@@ -46,9 +49,7 @@ export const useCarrito = defineStore('carrito', {
             const indexProducto = this.productos.findIndex(productos => {
                 return productos.id === id
             })
-
-
-            this.productos.splice(indexProducto)
+            this.productos.splice(indexProducto,1)
         },
         async cargarProductosMl() {
             const HTTP = axios.create({

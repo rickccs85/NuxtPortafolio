@@ -1,7 +1,7 @@
 <template>
   <Header />
 
-      <slot  class="bg-secondary"/>
+      <slot  class="bg-secondary min-h-screen"/>
 
   <Footer />
 </template>

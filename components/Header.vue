@@ -2,6 +2,17 @@
 const isActive = false;
 import { useCarrito } from '~/stores/carrito';
 const store = useCarrito();
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+let searchTerm = ''
+function submit() {
+  const cleanedTerm = cleanSearchTerm(searchTerm)
+  router.push(`/busqueda/${cleanedTerm}`)
+}
+function cleanSearchTerm(term) {
+  return term.trim().toLowerCase()
+}
 </script>
 <template>
   <div class="navbar bg-base-100 sticky top-0 z-50 shadow-xl">
@@ -14,15 +25,19 @@ const store = useCarrito();
           </svg>
         </label>
         <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-          <li v-for="categoria in store.categorias"><a>{{categoria.name}}</a></li>
-                </ul>
+          <li v-for="categoria in store.categorias"><a>{{ categoria.name }}</a></li>
+        </ul>
       </div>
       <NuxtLink to="/">
         <img class="h-12 max-w-none pl-2" src="~/assets/img/tugangaelectronic-logo-32.svg">
       </NuxtLink>
-      <div class="lg:visible invisible form-control pl-2 w-full">
-        <input type="text" placeholder="Encuentra +600 productos" class="input input-bordered" />
-      </div>
+      
+        <div class="lg:visible md:visible invisible form-control pl-2 w-full">
+          <form @submit.prevent="submit">
+          <input v-model="searchTerm" type="text" placeholder="Encuentra +600 productos" class="input input-bordered" />
+        </form>
+        </div>
+    
     </div>
     <div class="navbar-center">
 

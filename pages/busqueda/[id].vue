@@ -4,6 +4,8 @@ const store = useCarrito();
 
 import { ref, onMounted } from 'vue';
 
+const route = useRoute();
+const search = route.params.id;
 const offset = ref(0);
 const totalResults = ref(0);
 const productos = ref([]);
@@ -29,7 +31,7 @@ const cargarMas = () => {
 const cargarProductos = () => {
     pendiente.value = true;
 
-    fetch(`https://api.mercadolibre.com/sites/MLV/search?seller_id=96773693&offset=${offset.value}&limit=50`)
+    fetch(`https://api.mercadolibre.com/sites/MLV/search?seller_id=96773693&offset=${offset.value}&limit=50&q=${search}`)
         .then((response) => response.json())
         .then((data) => {
             agregarProductos(data.results);
@@ -46,7 +48,11 @@ const agregarProductos = (nuevosProductos) => {
 };
 </script>
 <template>
-    <Carousel />
+   <div class="position-relative">
+    <div class="d-flex justify-content-center align-items-center w-100 position-fixed bottom-0" v-if="!pendiente && productos.length === 0">
+      <p class="text-center text-xl">No se han encontrado resultados, intenta con otro término de búsqueda</p>
+    </div>
+  </div>
         <div class="grid grid-cols-2 lg:grid-cols-5 gap-2 p-4">
         <div v-for="producto in productos" :key="producto.id" class="card card-compact w-full bg-base-100 shadow">
                            <figure>
