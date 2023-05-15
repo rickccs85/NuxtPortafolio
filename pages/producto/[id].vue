@@ -13,6 +13,7 @@ const imageZoom = ref(producto.value.pictures[0].id);
 </script>
 
 <template>
+    
     <div class="container p-4 lg:p-8">
         <div class="text-sm breadcrumbs">
             <ul>

@@ -34,7 +34,7 @@ function cleanSearchTerm(term) {
       
         <div class="lg:visible md:visible invisible form-control pl-2 w-full">
           <form @submit.prevent="submit">
-          <input v-model="searchTerm" type="text" placeholder="Encuentra +600 productos" class="input input-bordered" />
+          <input v-model="searchTerm" type="text" placeholder="Encuentra +600 productos" class="input input-bordered w-full max-w-lg" />
         </form>
         </div>
     

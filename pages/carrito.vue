@@ -1,6 +1,7 @@
 
 <template>
-    <div class=" bg-gray-100 px-4 py-8 lg:p-8">
+
+    <div class="container mx-auto bg-gray-100 px-4 py-8 lg:p-8">
         <h1 class="mb-10 text-center text-2xl font-bold">Mi Carrito</h1>
         <div class="mx-auto max-w-5xl justify-center  md:flex md:space-x-6 xl:px-0">
         <div class="flex flex-col">
@@ -66,70 +67,7 @@
         </div>
     </div>
 
-    <!--  <div class="p-6 relative">
-        <div class="mb-6 flex w-full items-center justify-between">
-            <div class="text-2xl font-medium">My Cart</div> <button
-                class="text-sm uppercase opacity-80 hover:opacity-100">Refrescar</button>
-        </div>
-        <div class="overflow-y-auto" style="height: 80%;">
-            <div v-for="producto in store.productos" :key="store.productos.id" class="mb-2 flex w-full">
-            
-
-                <img loading="lazy" class="w-20 flex-none bg-white" :src="producto.thumbnail" :alt="producto.title">
-                <div class="ml-4 flex w-full flex-col justify-between">
-                    <div class="flex w-full justify-between">
-                        <di>
-                            <p class="text-lg font-medium">{{ producto.title }}    {{ producto.id }} {{ producto.quantity }}</p>
-                            <p class="text-sm">{{ producto.price }}</p>
-                        </di>
-                        <p class="font-medium">{{ producto.subTotal }}</p>
-                    </div>
-                </div>
-                <span @click="store.removerProducto(producto.id)">X</span>
-            </div>
-
-            <div class="mb-4 flex w-full">
-                <button
-                    class="mr-2 flex h-8 w-8 items-center justify-center border border-white/40 bg-white/0 hover:bg-white/10">
-                    <div>
-                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="#fff" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision"
-                            class="hover:text-accent-3 h-6 w-6">
-                            <path d="M18 6L6 18"></path>
-                            <path d="M6 6l12 12"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="flex h-8 w-full border border-white/40">
-                    <div class="flex h-full items-center px-2 ">1</div> <button
-                        class="ml-auto flex h-8 w-8 items-center justify-center border-l border-white/40 bg-white/0 hover:bg-white/10">
-                        <div>
-                     
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                <path d="M5 12H19" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                        </div>
-                    </button>
-                    <button
-                        class="flex h-8 w-8 items-center justify-center border-l border-white/40 bg-white/0 hover:bg-white/10">
-                        <div>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                <path d="M12 5V19" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path d="M5 12H19" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <button
-            class="mt-6 flex w-full items-center justify-center bg-white p-3 text-sm font-medium uppercase text-black opacity-90 hover:opacity-100">
-            <span>Proceed to Checkout</span>
-        </button>
-    </div> --></template>
+ </template>
 
 <script setup>
 import { useCarrito } from '~/stores/carrito';

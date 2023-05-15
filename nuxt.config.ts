@@ -22,7 +22,13 @@ export default defineNuxtConfig({
                 {
                     rel: 'stylesheet',
                     href: 'https://fonts.cdnfonts.com/css/proxima-nova-2'
+                },
+                {
+                    rel: 'icon',
+                    type: 'image/svg+xml',
+                    href: 'tugangaelectronic-logo-32.svg'
                 }
+            
             ],
         },
     },
