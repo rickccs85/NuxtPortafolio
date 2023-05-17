@@ -1,11 +1,15 @@
+
+
 <script setup>
+
 import { useCarrito } from '~/stores/carrito';
+import { ref, onMounted  } from 'vue';
+
+
+
 const store = useCarrito();
-
-import { ref, onMounted } from 'vue';
-
 const route = useRoute();
-const search = route.params.id;
+const category = route.params.id;
 const offset = ref(0);
 const totalResults = ref(0);
 const productos = ref([]);
@@ -19,7 +23,7 @@ onMounted(() => {
 const cargarProductos = () => {
     pendiente.value = true;
 
-    fetch(`https://api.mercadolibre.com/sites/MLV/search?seller_id=96773693&offset=${offset.value}&limit=50&q=${search}`)
+    fetch(`https://api.mercadolibre.com/sites/MLV/search?seller_id=96773693&offset=${offset.value}&limit=50&category=${category}`)
         .then((response) => response.json())
         .then((data) => {
             agregarProductos(data.results);

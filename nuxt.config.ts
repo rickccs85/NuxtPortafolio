@@ -1,8 +1,12 @@
 export default defineNuxtConfig({
     nitro: {
         compressPublicAssets: true,
+    }, 
+    runtimeConfig: {
+        siteTitle: process.env.NUXT_SITE_TITLE,
     },
     app: {
+       
         head: {
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
@@ -16,10 +20,6 @@ export default defineNuxtConfig({
             ],
             link: [
                 {
-                    rel: 'preconnect',
-                    href: 'https://fonts.googleapis.com'
-                },
-                {
                     rel: 'stylesheet',
                     href: 'https://fonts.cdnfonts.com/css/proxima-nova-2'
                 },
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
                     type: 'image/svg+xml',
                     href: 'tugangaelectronic-logo-32.svg'
                 }
-            
+
             ],
         },
     },
@@ -41,5 +41,6 @@ export default defineNuxtConfig({
         },
     ],],
     pages: true,
+
 })
 

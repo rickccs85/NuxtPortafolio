@@ -1,8 +1,8 @@
 <template>
   <Header />
-
-      <slot  class="bg-secondary min-h-screen"/>
-
+<div class="container mx-auto bg-secondary max-w-full">
+      <slot  />
+    </div>
   <Footer />
 </template>
 <script setup>

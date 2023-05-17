@@ -30,4 +30,5 @@ module.exports = {
     rtl: false,
     prefix: "",
   },
+  content: ['./src/**/*.html' /* ... */],
 }

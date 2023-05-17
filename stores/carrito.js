@@ -1,80 +1,78 @@
-import { defineStore } from 'pinia';
+import { defineStore, storeToRefs } from 'pinia';
+import axios from 'axios';
 
-import axios from "axios";
 export const useCarrito = defineStore('carrito', {
     state: () => ({
+        carrito: [],
+        categorias: [],
         productos: [],
-        categorias: null,
-        catalogo: null
     }),
     getters: {
         carritoCuentaTotal(state) {
-            return state.productos.length
+            return state.carrito.length
         },
-        carritoTotal(state) {
-            return state.productos.length
-        },
-
+        subTotal: (state) => state.carrito.reduce((total, item) => total + item.price * item.quantity, 0)
+        ,
         productosCheaperThan(state) {
             return (price) => (
-                state.productos.filter(product =>
+                state.carrito.filter(product =>
                     product.price < price
                 )
             )
         }
     },
     actions: {
-        fetchCategorias() {
-            const { data: categorias } =  useFetch("https://api.mercadolibre.com/sites/MLV/categories");
-            this.categorias = categorias;
-           },
+        async cargarCategorias() {
+            const { data } = await axios.get("https://api.mercadolibre.com/sites/MLV/categories");
+            this.categorias = data;
+        },
         async agregarProducto(productoNuevo) {
 
             //Cheaqueamos que el productos exista
-            const productoExistente = this.productos.find(productos => {
+            const productoExistente = this.carrito.find(productos => {
                 return productos.id === productoNuevo.id
             })
             if (productoExistente) {
-                let productoExistenteIndex = this.productos.findIndex(
+                let productoExistenteIndex = this.carrito.findIndex(
                     item => item.productId === productoExistente.productId
                 )
                 productoExistente.quantity = productoExistente.quantity + 1
                 productoExistente.subTotal = productoNuevo.price * productoExistente.quantity
-                this.productos[productoExistenteIndex] = productoExistente
+                this.carrito[productoExistenteIndex] = productoExistente
             } else {
-                this.productos.push(productoNuevo)
+                this.carrito.push(productoNuevo)
             }
         },
         removerProducto(id) {
-            const indexProducto = this.productos.findIndex(productos => {
+            const indexProducto = this.carrito.findIndex(productos => {
                 return productos.id === id
             })
-            this.productos.splice(indexProducto,1)
+            this.carrito.splice(indexProducto, 1)
+
+        },
+        async traerCategoria(category_id) {
+            const response = await fetch("https://api.mercadolibre.com/categories/" + category_id)
+            const data = await response.json();
+            return data.name
         },
         async cargarProductosMl() {
-            const HTTP = axios.create({
-                baseURL: "https://api.mercadolibre.com/",
-            });
-            const products = [];
-            let page = 1;
+            let allProducts = [];
+            let page = 0;
             let totalPages = 1;
 
-            while (page <= totalPages) {
-                const response = await HTTP.get(`https://api.mercadolibre.com/sites/MLV/search?seller_id=96773693&limit=50&page=${page}`);
-
-                products.push(...response.data.results);
-
-                totalPages = response.data.paging.total;
-
+            while (page < totalPages) {
+                const { data } = await axios.get(`https://api.mercadolibre.com/sites/MLV/search?seller_id=96773693&offset=${page * 50}`);
+                const producto = data.results;
+                allProducts.push(...producto);
+                totalPages = Math.ceil(data.paging.total / data.paging.limit);
                 page++;
             }
 
-            const categories = await Promise.all(products.map(product => HTTP.get(`https://api.mercadolibre.com/categories/${product.category_id}`)));
-
-            this.catalogo = await products.map((product, index) => ({
+            const products = allProducts.map(product => ({
                 id: product.id,
                 title: product.title,
                 price: product.price,
+                category_id: product.category_id,
                 thumbnail_id: product.thumbnail_id,
                 permalink: product.permalink,
                 sold_quantity: product.sold_quantity,
@@ -89,10 +87,10 @@ export const useCarrito = defineStore('carrito', {
                 attributes: product.attributes.map(attribute => ({
                     name: attribute.name,
                     value_name: attribute.value_name
-                })),
-                category: categories[index].data.name
+                }))
             }));
-            console.log(this.catalogo)
+            this.productos = products;
         }
     }
+
 })
