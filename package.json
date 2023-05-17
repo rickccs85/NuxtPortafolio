@@ -11,18 +11,22 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.6.7",
     "@types/node": "^18",
+    "compression-webpack-plugin": "^10.0.0",
     "daisyui": "^2.46.0",
     "nuxt": "^3.4.2"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.9",
     "axios": "^1.4.0",
-    "vuex": "^4.1.0"
+    "nuxt-compress": "^5.0.0",
+    "nuxt-precompress": "^0.5.9",
+    "vuex": "^4.1.0",
+    "webpack": "^5.83.0"
   },
   "version": "1.0.0",
   "description": "Ecommerce",
   "main": "index.js",
-  "repository": "https://github.com/rickccs85/NuxtPortafolio.git",
+  "repository": "https://github.com/rickccs85/tugangaelectronic-shop.git",
   "author": "rickccs85 <infantericardo@gmail.com>",
   "license": "MIT"
 }

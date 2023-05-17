@@ -22,6 +22,14 @@ const { data: categorias } = await useFetch(`https://api.mercadolibre.com/catego
 const categoria = ref(categorias.value.name)
 const categoriaRoot = ref(categorias.value.path_from_root[0].name)
 const categoriaRootId = ref(categorias.value.path_from_root[0].id)
+
+function cleanText(text) {
+  const cleaned = text.replace(/¡BIENVENIDOS!\n(.*)DESCRIPCIÓN PRODUCTO\*{35}/, "");
+  return cleaned;
+}
+const descripcionRaw = ref(descripcion.value.plain_text);
+console.log(cleanText(descripcionRaw.value))
+
 </script>
 
 <template>
@@ -72,7 +80,7 @@ const categoriaRootId = ref(categorias.value.path_from_root[0].id)
                 <button
                     @click="store.agregarProducto({ id: producto.id, title: producto.title, price: producto.price, thumbnail: producto.thumbnail, quantity: 1, subTotal: producto.price })"
                     class="btn gap-2 mb-4">Agregar al carrito</button>
-                <p class="t mb-4 whitespace-pre-line">{{ descripcion.plain_text }}</p>
+                <p class="t mb-4 whitespace-pre-line">{{ cleanText(descripcion.plain_text) }}</p>
             </div>
         </div>
 

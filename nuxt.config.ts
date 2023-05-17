@@ -1,6 +1,8 @@
 export default defineNuxtConfig({
     nitro: {
-        compressPublicAssets: true,
+        compressPublicAssets: {
+            brotli: true
+          }
     }, 
     runtimeConfig: {
         siteTitle: process.env.NUXT_SITE_TITLE,
