@@ -15,7 +15,7 @@ module.exports = {
         tugangaelectronic: {
           "primary": "#021544",
           "secondary": "#EAEBEE",
-          "accent": "#021544",
+          "accent": "#F8EF1F",
           "neutral": "#021544",
           "base-100": "#FFFFFF",
           "info": "#4AA8C0",
