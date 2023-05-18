@@ -23,13 +23,9 @@ const categoria = ref(categorias.value.name)
 const categoriaRoot = ref(categorias.value.path_from_root[0].name)
 const categoriaRootId = ref(categorias.value.path_from_root[0].id)
 
-function cleanText(text) {
-  const cleaned = text.replace(/¡BIENVENIDOS!\n(.*)DESCRIPCIÓN PRODUCTO\*{35}/, "");
-  return cleaned;
-}
-const descripcionRaw = ref(descripcion.value.plain_text);
-console.log(cleanText(descripcionRaw.value))
 
+const descripcionRaw = ref(descripcion.value.plain_text.replace(/(¡BIEN)([\s\S]*?)((DESCRIPCIÓN PRODUCTO)\n*(\*{35}))/, ""))
+//.replace(/((\*{33})\nINFORMACIÓN GENERAL)([\s\S]*?)(cliente!)/,"")
 </script>
 
 <template>
@@ -71,7 +67,7 @@ console.log(cleanText(descripcionRaw.value))
                 </div>
             </div>
             <div>
-                <h1 class="text-4xl font-bold mb-4">{{ producto.title }}</h1>
+                <h1 class="text-3xl font-bold mb-4">{{ producto.title }}</h1>
 
                 <div class="flex items-center mb-4">
                     <span class="text-1xl font-bold mr-2">U$D {{ producto.price }}</span>
@@ -80,9 +76,14 @@ console.log(cleanText(descripcionRaw.value))
                 <button
                     @click="store.agregarProducto({ id: producto.id, title: producto.title, price: producto.price, thumbnail: producto.thumbnail, quantity: 1, subTotal: producto.price })"
                     class="btn gap-2 mb-4">Agregar al carrito</button>
-                <p class="t mb-4 whitespace-pre-line">{{ cleanText(descripcion.plain_text) }}</p>
+                <button
+                    @click="store.agregarProducto({ id: producto.id, title: producto.title, price: producto.price, thumbnail: producto.thumbnail, quantity: 1, subTotal: producto.price })"
+                    class="btn btn-secondary gap-2 m-4 mb-4">Comprar en MercadoLibre</button>
+
+                <p class="mb-4 whitespace-pre-line"><span class="text-2xl">Descripción</span>{{ descripcionRaw }}</p>
             </div>
         </div>
-
+        <h2 class="text-2xl text-bold">Productos Relacionados</h2>
+        <product-grid-relacionados :categoria="`${categoriaRootId}`" />
     </div>
 </template>

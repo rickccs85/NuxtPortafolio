@@ -19,7 +19,6 @@
     "@pinia/nuxt": "^0.4.9",
     "axios": "^1.4.0",
     "nuxt-compress": "^5.0.0",
-    "nuxt-precompress": "^0.5.9",
     "vuex": "^4.1.0",
     "webpack": "^5.83.0"
   },
