@@ -15,6 +15,10 @@ const totalResults = ref(0);
 const productos = ref([]);
 const pendiente = ref(false);
 
+
+const { data: categorias } = await useFetch(`https://api.mercadolibre.com/categories/${category}`)
+const categoria = ref(categorias.value.name)
+
 onMounted(() => {
     cargarProductos();
   
@@ -23,7 +27,7 @@ onMounted(() => {
 const cargarProductos = () => {
     pendiente.value = true;
 
-    fetch(`https://api.mercadolibre.com/sites/MLV/search?seller_id=96773693&offset=${offset.value}&limit=50&category=${category}`)
+    fetch(`https://api.mercadolibre.com/sites/MLV/search?seller_id=96773693&offset=${offset.value}&limit=48&category=${category}`)
         .then((response) => response.json())
         .then((data) => {
             agregarProductos(data.results);
@@ -40,12 +44,12 @@ const agregarProductos = (nuevosProductos) => {
 };
 </script>
 <template>
-   <div class="position-relative">
+   <div class="container mx-auto">
     <div class="d-flex justify-content-center align-items-center w-100 position-fixed bottom-0" v-if="!pendiente && productos.length === 0">
       <p class="text-center text-xl">No se han encontrado resultados, intenta con otro término de búsqueda</p>
     </div>
-  </div>
-        <div class="grid grid-cols-2 lg:grid-cols-5 gap-2 p-4">
+  </div><h1 class="text-3xl p-8">{{ categoria  }}</h1>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 p-4">
         <div v-for="producto in productos" :key="producto.id" class="card card-compact w-full bg-base-100 shadow">
                            <figure>
                             <div v-bind:style="{ 'background-image': 'url(https://http2.mlstatic.com/D_' + producto.thumbnail_id + '-O.webp)' }" class="border-b-1 h-56 w-full bg-contain bg-center bg-no-repeat" ></div>

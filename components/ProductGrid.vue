@@ -1,6 +1,6 @@
 
 <template>
-  <div class="grid grid-cols-2 lg:grid-cols-5 gap-2 p-4">
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 p-4">
     <div v-for="producto in carrito" :key="producto.id" class="card rounded-lg card-compact w-full bg-white shadow">
       <figure>
         <div
@@ -61,7 +61,7 @@ const cargarMas = () => {
 const cargarProductos= () => {
   pendiente.value = true;
 
-  fetch(`https://api.mercadolibre.com/sites/MLV/search?seller_id=96773693&offset=${offset.value}&limit=50`)
+  fetch(`https://api.mercadolibre.com/sites/MLV/search?seller_id=96773693&offset=${offset.value}&limit=48`)
     .then((response) => response.json())
     .then((data) => {
       agregarCarrito(data.results);

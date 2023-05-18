@@ -22,10 +22,14 @@
     </div>
   </div>
 </div>
-
+    <div class="px-4 pt-4 text-3xl">Las Herramientas más compradas</div>
+    <product-grid-relacionados categoria="MLV424985" />
     <div class="px-4 pt-4 text-3xl">Compra Lo Mejor en Audífonos</div>
     <product-grid-relacionados categoria="MLV8901" />
-    <div class="px-4 pt-4 text-3xl">Lo último en Electrónica</div>
-    <product-grid-relacionados categoria="MLV1000" />
+    <div class="px-4 pt-4 text-3xl">Lo último en Equipos de Bombeo</div>
+    <product-grid-relacionados categoria="MLV442454" />
+    <div class="px-4 pt-4 text-3xl">Lo último para tu Vehículo</div>
+    <product-grid-relacionados categoria="MLV1747" />
     <ProductGrid />
 </template>
+MLV424985
