@@ -2,7 +2,7 @@
 <footer class="footer p-10 bg-neutral text-neutral-content">
   <div>
     <img class="h-10 pl-2" src="~/assets/img/tugangaelectronic-logo-32.svg">
-    <p>INVERSIONES INFAPRO, C.A.<br/>J-29548655-3</p>
+    <p>INVERSIONES INFAPRO, C.A.<br/>J-29548655-3</p> Made by Ricardo Infante
   </div> 
   <div>
     <span class="footer-title">Social</span> 
